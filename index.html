@@ -1,0 +1,198 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammad Karimi</title>
+<style>
+body {
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-family: Arial, sans-serif;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
+    transition:0.5s;
+}
+.glass-card {
+    width:90%;
+    max-width:350px;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* عکس پروفایل گرد */
+.profile-img {
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid rgba(255,255,255,0.5);
+    margin-bottom:15px;
+}
+
+/* دکمه‌ها */
+.btn {
+    margin:10px 0; /* همه دکمه‌ها فاصله مساوی دارند */
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    width:100%;
+    font-size:16px;
+    cursor:pointer;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px);
+    color:#fff;
+}
+
+/* حذف فاصله اضافی برای اینستا و تلگرام */
+#instaBtn, #telegramBtn {
+    margin-top:10px; /* همانند سایر دکمه‌ها */
+}
+
+.btn:hover {background: rgba(255,255,255,0.35);}
+
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:0;
+    background: rgba(0,0,0,0.85);
+    overflow:hidden;
+    transition: height 0.6s ease-in-out;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 20px;
+    color:#fff;
+    text-align:center;
+}
+.overlay-content {
+    max-width:450px;
+    font-size:20px;
+    line-height:1.6;
+}
+.closeBtn {
+    margin-top:30px;
+    padding:10px 20px;
+    background: rgba(255,255,255,0.25);
+    border:none;
+    border-radius:10px;
+    color:#fff;
+    cursor:pointer;
+}
+.closeBtn:hover {background: rgba(255,255,255,0.35);}
+#langBtn {
+    margin-top:10px;
+    padding:8px 20px;
+    background: rgba(255,255,255,0.3);
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    color:#fff;
+}
+#langBtn:hover {background: rgba(255,255,255,0.4);}
+
+footer {
+    margin-top:20px;
+    color:#fff;
+    font-size:14px;
+}
+footer a {color:#fff; text-decoration:none;}
+footer a:hover {text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="glass-card">
+    <img src="IMG_4870 [Original Size].jpg" alt="Profile" class="profile-img">
+    <h1 id="title">Hello, I am <br> Mohammad Karimi</h1>
+
+    <button class="btn" onclick="openOverlay('about')" id="aboutBtn">About Me</button>   
+    <button class="btn" onclick="openOverlay('interest')" id="interestBtn">My Interests</button>
+    <a class="btn" href="https://www.instagram.com/mohammadmk.16/#" target="_blank" id="instaBtn">Instagram</a>
+    <a class="btn" href="https://t.me/MOHAMMADMK16" target="_blank" id="telegramBtn">Telegram</a>
+
+   <a href="https://mkstudio16.ir/"><button class="btn" id="companyBtn">My Company</button></a>
+    <button id="langBtn" onclick="changeLang()">فارسی</button>
+</div>
+
+<!-- پرده درباره من -->
+<div id="aboutOverlay" class="overlay">
+    <div class="overlay-content">
+        <h2 id="aboutTitle">About Me</h2>
+        <p id="aboutText">Hello, I am Mohammad. I was born in 2011, and I have a special interest in flying and computers. </p>
+        <button class="closeBtn" onclick="closeOverlay('about')" id="aboutClose">Close</button>
+    </div>
+</div>
+
+<!-- پرده علاقه‌ ها -->
+<div id="interestOverlay" class="overlay">
+    <div class="overlay-content">
+        <h2 id="interestTitle">My Interests</h2>
+        <p id="interestText">I am deeply passionate about website design, photography, photo editing, videography, video editing, and video games.</p>
+        <button class="closeBtn" onclick="closeOverlay('interest')" id="interestClose">Close</button>
+    </div>
+</div>
+
+<footer>
+    <a href="https://mkstudio16.ir" target="_blank">حقوق این سایت محفوظ است mkstudio16.ir</a>
+</footer>
+
+<script>
+let lang = "en";
+function openOverlay(type) {document.getElementById(type+"Overlay").style.height="100%";}
+function closeOverlay(type) {document.getElementById(type+"Overlay").style.height="0";}
+function changeLang(){
+    if(lang==="en"){
+        lang="fa";
+        document.body.style.direction="rtl";
+        document.getElementById("title").innerHTML="سلام، من <br> محمد کریمی هستم";
+        document.getElementById("aboutBtn").innerHTML="درباره من";
+        document.getElementById("instaBtn").innerHTML="اینستاگرام";
+        document.getElementById("telegramBtn").innerHTML="تلگرام";
+        document.getElementById("interestBtn").innerHTML="علاقه‌های من";
+        document.getElementById("companyBtn").innerHTML="کمپانی من";
+        document.getElementById("langBtn").innerHTML="English";
+        document.getElementById("aboutTitle").innerHTML="درباره من";
+        document.getElementById("aboutText").innerHTML="سلام من محمد هستم من متولد 2011 هستم و من علاقه خاصی به پرواز و کامپیوتر دارم";
+        document.getElementById("aboutClose").innerHTML="بستن";
+        document.getElementById("interestTitle").innerHTML="علاقه‌های من";
+        document.getElementById("interestText").innerHTML="من علاقه زیادی به طراحی سایت، عکاسی، ادیت عکس، فیلم‌برداری و ادیت ویدئو و بازی های ویدیویی  دارم.";
+        document.getElementById("interestClose").innerHTML="بستن";
+    } else {
+        lang="en";
+        document.body.style.direction="ltr";
+        document.getElementById("title").innerHTML="Hello, I am <br> Mohammad Karimi";
+        document.getElementById("aboutBtn").innerHTML="About Me";
+        document.getElementById("instaBtn").innerHTML="Instagram";
+        document.getElementById("telegramBtn").innerHTML="Telegram";
+        document.getElementById("interestBtn").innerHTML="My Interests";
+        document.getElementById("companyBtn").innerHTML="My Company";
+        document.getElementById("langBtn").innerHTML="فارسی";
+        document.getElementById("aboutTitle").innerHTML="About Me";
+        document.getElementById("aboutText").innerHTML="Here you can write a short description about yourself, your skills and your background.";
+        document.getElementById("aboutClose").innerHTML="Close";
+        document.getElementById("interestTitle").innerHTML="My Interests";
+        document.getElementById("interestText").innerHTML="I am deeply passionate about website design, photography, photo editing, videography, video editing, and video games."
+
+        document.getElementById("interestClose").innerHTML="Close";
+    }
+}
+</script>
+
+</body>
+</html> 
